@@ -1,6 +1,6 @@
-# Smart task engine (dependency graph)
+# Smart Todo (Next.js + dependency graph engine)
 
-TypeScript library: nested subtasks, prerequisite edges (`dependsOn`), cycle detection, and `completeTask` with prerequisite / subtask checks plus downstream **unlocked** IDs.
+Next.js 15 (App Router) UI on top of the same **TaskEngine** as the unit tests: nested subtasks, prerequisite edges (`dependsOn`), cycle detection, and `completeTask` with downstream **unlocked** IDs.
 
 ## `dependencies` / `blockedBy` (spec wording)
 
@@ -19,9 +19,22 @@ TypeScript library: nested subtasks, prerequisite edges (`dependsOn`), cycle det
 - **`completed`:** calling `completeTask` again throws `TaskCompletionError`.
 - **`cancelled`:** also terminal — `completeTask` **always throws** (no “un-cancel” / completion of cancelled work). To model rework, create a new task id.
 
+## Project layout
+
+- **`src/lib/`** — `Task`, `TaskEngine`, and error types (used by UI and tests).
+- **`src/app/`** — App Router (`layout.tsx`, `page.tsx`, `globals.css`, `not-found.tsx`).
+- **`src/components/todo-app.tsx`** — client demo that wires the engine to buttons and nested task rows.
+
+## Commands
+
 ```bash
 npm install
-npm test
+npm run dev      # http://localhost:3000
+npm run build
+npm run start
+npm test         # TaskEngine unit tests (node:test + tsx)
 npm run typecheck
-npm run build   # emits dist/
+npm run lint
 ```
+
+If you use a root-level **`app/`** directory, Next.js picks it over **`src/app/`**. Keep routes in one place (here: **`src/app/`** only).
