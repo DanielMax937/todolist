@@ -1,11 +1,18 @@
 import Link from 'next/link';
 
+import { ShareBar } from '@/components/share-bar';
 import { TodoApp } from '@/components/todo-app';
 
 export default function HomePage() {
   return (
     <main>
-      <h1 className="page-title">Smart Todo</h1>
+      <div className="page-header-top">
+        <h1 className="page-title">Smart Todo</h1>
+        <ShareBar
+          shareTitle="Smart Todo — dependency graph"
+          shareText="Dependency-aware tasks: nested subtasks, dependsOn, and TaskEngine completion rules."
+        />
+      </div>
       <p className="page-lead">
         Dependency-aware tasks: <code>dependsOn</code> prerequisites, nested subtasks, and{' '}
         <code>completeTask</code> with unlocked downstream IDs — powered by the same{' '}

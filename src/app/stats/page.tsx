@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { ShareBar } from '@/components/share-bar';
 import { computeTaskStatistics } from '@/lib/statistics';
 import { buildDemoEngineForStats } from '@/lib/stats-demo';
 
@@ -38,7 +39,13 @@ export default function StatsPage() {
       <p className="page-lead" style={{ marginBottom: '0.5rem' }}>
         <Link href="/">← Back to Smart Todo</Link>
       </p>
-      <h1 className="page-title">Todo task statistics</h1>
+      <div className="page-header-top">
+        <h1 className="page-title">Todo task statistics</h1>
+        <ShareBar
+          shareTitle="Smart Todo — task statistics"
+          shareText="Snapshot from computeTaskStatistics — same demo graph as the main app."
+        />
+      </div>
       <p className="page-lead">
         Snapshot from <code>computeTaskStatistics(TaskEngine)</code> — same demo graph as{' '}
         <code>npm run build:stats</code> / <code>public/stats.html</code>.
