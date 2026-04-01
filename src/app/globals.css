@@ -265,3 +265,28 @@ main {
   font-variant-numeric: tabular-nums;
   color: var(--text);
 }
+
+.share-skeleton-lead {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.share-skeleton-block {
+  height: 0.75rem;
+  border-radius: 6px;
+  background: var(--border);
+  opacity: 0.45;
+  margin-bottom: 0.5rem;
+}
+
+.share-skeleton-block:last-child {
+  margin-bottom: 0;
+}
+
+.share-skeleton-block--short {
+  width: 55%;
+}
