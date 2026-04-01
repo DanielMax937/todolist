@@ -1,4 +1,6 @@
-import type { Task } from './types.js';
+import type { Task } from './types';
+
+export type { Task, TaskStatus } from './types';
 
 export class CircularDependencyError extends Error {
   readonly name = 'CircularDependencyError';

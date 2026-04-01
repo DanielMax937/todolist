@@ -1,9 +1,9 @@
-export type { Task, TaskStatus } from './types.js';
-export type { TaskStatsSnapshot } from './statistics.js';
-export { computeTaskStatistics } from './statistics.js';
+export type { Task, TaskStatus } from './lib/types';
+export type { TaskStatsSnapshot } from './lib/statistics';
+export { computeTaskStatistics } from './lib/statistics';
 export {
   TaskEngine,
   CircularDependencyError,
   TaskCompletionError,
   TaskNotFoundError,
-} from './engine.js';
+} from './lib/engine';

@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 
-import { TaskEngine } from '../src/engine.js';
-import { computeTaskStatistics } from '../src/statistics.js';
-import type { Task } from '../src/types.js';
+import { TaskEngine } from '../src/lib/engine';
+import { computeTaskStatistics } from '../src/lib/statistics';
+import type { Task } from '../src/lib/types';
 
 function leaf(id: string, title: string, status: Task['status'] = 'pending'): Task {
   return { id, title, status, subtasks: [], dependsOn: [] };

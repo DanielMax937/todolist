@@ -6,40 +6,10 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { TaskEngine } from '../src/engine.js';
-import { computeTaskStatistics } from '../src/statistics.js';
-import type { Task } from '../src/types.js';
+import { buildDemoEngineForStats } from '../src/lib/stats-demo.js';
+import { computeTaskStatistics } from '../src/lib/statistics.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-
-function leaf(id: string, title: string, status: Task['status'] = 'pending'): Task {
-  return { id, title, status, subtasks: [], dependsOn: [] };
-}
-
-function buildDemoEngine(): TaskEngine {
-  const onboarding: Task = {
-    id: 'onboarding',
-    title: 'Onboarding',
-    status: 'in_progress',
-    dependsOn: [],
-    subtasks: [
-      leaf('onb-account', 'Create account', 'completed'),
-      leaf('onb-profile', 'Fill profile', 'pending'),
-    ],
-  };
-
-  const engine = new TaskEngine([
-    onboarding,
-    leaf('infra', 'Provision infra', 'pending'),
-    leaf('design', 'Design review', 'completed'),
-    leaf('blocked', 'Blocked legacy', 'cancelled'),
-  ]);
-
-  engine.addTaskDependency('infra', 'design');
-  engine.addTaskDependency('onboarding', 'design');
-
-  return engine;
-}
 
 function escapeHtml(s: string): string {
   return s
@@ -199,7 +169,7 @@ function renderPage(jsonPayload: string): string {
 `;
 }
 
-const engine = buildDemoEngine();
+const engine = buildDemoEngineForStats();
 const stats = computeTaskStatistics(engine);
 const jsonPayload = escapeHtml(JSON.stringify(stats, null, 2));
 

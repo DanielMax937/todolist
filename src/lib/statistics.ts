@@ -1,5 +1,5 @@
-import type { TaskEngine } from './engine.js';
-import type { Task, TaskStatus } from './types.js';
+import type { TaskEngine } from './engine';
+import type { Task, TaskStatus } from './types';
 
 /** Aggregated counts for every task in the engine (flat index, all subtrees). */
 export interface TaskStatsSnapshot {
