@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { computeTaskStatistics } from '@/lib/statistics';
@@ -10,6 +11,23 @@ const statusLabels: Record<(typeof statusOrder)[number], string> = {
   in_progress: 'In progress',
   completed: 'Completed',
   cancelled: 'Cancelled',
+};
+
+const statsDescription =
+  'Snapshot counts from computeTaskStatistics(TaskEngine) on the demo task graph — mirrors npm run build:stats / public/stats.html.';
+
+export const metadata: Metadata = {
+  title: 'Task statistics',
+  description: statsDescription,
+  openGraph: {
+    title: 'Task statistics',
+    description: statsDescription,
+    url: '/stats',
+  },
+  twitter: {
+    title: 'Task statistics',
+    description: statsDescription,
+  },
 };
 
 export default function StatsPage() {
