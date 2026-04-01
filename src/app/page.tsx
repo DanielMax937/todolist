@@ -13,6 +13,8 @@ export default function HomePage() {
       </p>
       <p className="page-lead">
         <Link href="/stats">Task statistics</Link> — aggregate counts from <code>computeTaskStatistics</code>.
+        {' · '}
+        <Link href="/share">Shared list</Link> — read-only share view (skeleton).
       </p>
       <TodoApp />
     </main>
