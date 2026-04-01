@@ -12,7 +12,8 @@ export default function HomePage() {
         <code>TaskEngine</code> as the unit tests.
       </p>
       <p className="page-lead">
-        <Link href="/stats">Task statistics</Link> — aggregate counts from <code>computeTaskStatistics</code>.
+        <Link href="/stats">Task statistics</Link> — aggregate counts from <code>computeTaskStatistics</code>.{' '}
+        <Link href="/share/demo">Shared todo (demo)</Link> — read-only snapshot with loading / empty / error states.
       </p>
       <TodoApp />
     </main>

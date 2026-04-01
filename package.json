@@ -10,7 +10,7 @@
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
-    "test": "node --import tsx/esm --test tests/engine.test.ts tests/statistics.test.ts",
+    "test": "node --import tsx/esm --test tests/engine.test.ts tests/statistics.test.ts tests/share-data.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
