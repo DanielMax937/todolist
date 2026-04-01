@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "test": "node --import tsx/esm tests/engine.test.ts",
+    "build:stats": "tsx scripts/generate-stats-page.ts",
+    "test": "node --import tsx/esm --test tests/engine.test.ts tests/statistics.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
