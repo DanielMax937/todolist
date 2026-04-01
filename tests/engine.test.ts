@@ -5,8 +5,8 @@ import {
   TaskEngine,
   CircularDependencyError,
   TaskCompletionError,
-} from '../src/engine.js';
-import type { Task } from '../src/types.js';
+} from '../src/lib/engine';
+import type { Task } from '../src/lib/types';
 
 function leaf(id: string, title: string, status: Task['status'] = 'pending'): Task {
   return { id, title, status, subtasks: [], dependsOn: [] };
