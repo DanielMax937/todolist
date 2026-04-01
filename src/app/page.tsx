@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { TodoApp } from '@/components/todo-app';
 
 export default function HomePage() {
@@ -8,6 +10,9 @@ export default function HomePage() {
         Dependency-aware tasks: <code>dependsOn</code> prerequisites, nested subtasks, and{' '}
         <code>completeTask</code> with unlocked downstream IDs — powered by the same{' '}
         <code>TaskEngine</code> as the unit tests.
+      </p>
+      <p className="page-lead">
+        <Link href="/stats">Task statistics</Link> — aggregate counts from <code>computeTaskStatistics</code>.
       </p>
       <TodoApp />
     </main>

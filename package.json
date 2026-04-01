@@ -6,10 +6,11 @@
   "type": "module",
   "scripts": {
     "build": "env -u TURBOPACK NODE_ENV=production next build",
+    "build:stats": "tsx scripts/generate-stats-page.ts",
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
-    "test": "node --import tsx/esm tests/engine.test.ts",
+    "test": "node --import tsx/esm --test tests/engine.test.ts tests/statistics.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
