@@ -266,6 +266,76 @@ main {
   color: var(--text);
 }
 
+.share-state {
+  border-radius: var(--radius);
+  padding: 1.25rem 1.1rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.share-state--loading {
+  border-style: dashed;
+}
+
+.share-state--error {
+  border-color: rgba(240, 113, 120, 0.45);
+  background: rgba(240, 113, 120, 0.06);
+}
+
+.share-state--empty {
+  border-style: dashed;
+  color: var(--muted);
+}
+
+.share-state-title {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.share-state--empty .share-state-title {
+  color: var(--muted);
+}
+
+.share-state-text {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.share-state--error .share-state-text {
+  color: #f5b8bc;
+}
+
+.share-state--error .share-state-title {
+  color: var(--danger);
+}
+
+.share-skeleton {
+  height: 4.5rem;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(
+    90deg,
+    rgba(45, 58, 77, 0.35) 0%,
+    rgba(45, 58, 77, 0.65) 50%,
+    rgba(45, 58, 77, 0.35) 100%
+  );
+  background-size: 200% 100%;
+  animation: share-shimmer 1.1s ease-in-out infinite;
+}
+
+@keyframes share-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
 .share-skeleton-lead {
   margin: 0 0 0.75rem;
   font-size: 0.8rem;

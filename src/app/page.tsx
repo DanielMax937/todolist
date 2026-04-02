@@ -22,6 +22,8 @@ export default function HomePage() {
         <Link href="/stats">Task statistics</Link> — aggregate counts from <code>computeTaskStatistics</code>.
         {' · '}
         <Link href="/share">Shared list</Link> — read-only share view (skeleton).
+        {' · '}
+        <Link href="/share/demo">Shared todo (demo)</Link> — snapshot with loading / empty / error states.
       </p>
       <TodoApp />
     </main>
