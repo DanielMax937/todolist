@@ -12,7 +12,7 @@
     "lint": "next lint",
     "test": "node --import tsx/esm --test tests/engine.test.ts tests/statistics.test.ts tests/integration.test.ts tests/share-data.test.ts",
     "typecheck": "tsc --noEmit",
-    "verify": "npm test && npm run typecheck && npm run lint && npm run build"
+    "verify": "npm test && npm run lint && npm run build && npm run typecheck"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
