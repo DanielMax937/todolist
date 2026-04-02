@@ -2,55 +2,20 @@
 
 import { useCallback, useMemo, useRef, useState } from 'react';
 
+import { buildDemoEngine } from '@/lib/demo-graph';
 import { TaskEngine, TaskCompletionError, type Task } from '@/lib/engine';
-
-function leaf(id: string, title: string, status: Task['status'] = 'pending'): Task {
-  return { id, title, status, subtasks: [], dependsOn: [] };
-}
-
-function buildDemoRoots(): Task[] {
-  const child = leaf('child', 'Finish child work');
-  const root: Task = {
-    id: 'root',
-    title: 'Ship feature',
-    status: 'pending',
-    dependsOn: [],
-    subtasks: [
-      {
-        id: 's1',
-        title: 'Design review',
-        status: 'pending',
-        dependsOn: [],
-        subtasks: [leaf('s1a', 'Sketch flows')],
-      },
-      child,
-    ],
-  };
-  return [
-    root,
-    leaf('gate', 'Release gate'),
-    leaf('down1', 'Downstream A'),
-    leaf('down2', 'Downstream B'),
-  ];
-}
 
 function useTaskEngine(): { engine: TaskEngine; version: number; bump: () => void } {
   const engineRef = useRef<TaskEngine | null>(null);
   const [version, setVersion] = useState(0);
 
   if (!engineRef.current) {
-    const roots = buildDemoRoots();
-    const engine = new TaskEngine();
-    for (const r of roots) engine.addRoot(r);
-    engine.addTaskDependency('down1', 'gate');
-    engine.addTaskDependency('down2', 'gate');
-    engine.addTaskDependency('root', 'gate');
-    engineRef.current = engine;
+    engineRef.current = buildDemoEngine();
   }
 
   const bump = useCallback(() => setVersion((v) => v + 1), []);
 
-  return { engine: engineRef.current, version, bump };
+  return { engine: engineRef.current as TaskEngine, version, bump };
 }
 
 function statusClass(status: Task['status']): string {
