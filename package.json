@@ -5,7 +5,7 @@
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
-    "build": "env -u TURBOPACK NODE_ENV=production next build",
+    "build": "node -e \"try { require('fs').unlinkSync('tsconfig.tsbuildinfo'); } catch (_) {}\" && env -u TURBOPACK NODE_ENV=production next build",
     "build:stats": "tsx scripts/generate-stats-page.ts",
     "dev": "next dev",
     "start": "next start",
