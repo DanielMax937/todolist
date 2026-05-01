@@ -5,13 +5,14 @@
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
-    "build": "env -u TURBOPACK NODE_ENV=production next build",
+    "build": "node -e \"try { require('fs').unlinkSync('tsconfig.tsbuildinfo'); } catch (_) {}\" && env -u TURBOPACK NODE_ENV=production next build",
     "build:stats": "tsx scripts/generate-stats-page.ts",
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
-    "test": "node --import tsx/esm --test tests/engine.test.ts tests/statistics.test.ts",
-    "typecheck": "tsc --noEmit"
+    "test": "node --import tsx/esm --test tests/engine.test.ts tests/statistics.test.ts tests/integration.test.ts tests/share-data.test.ts",
+    "typecheck": "tsc --noEmit",
+    "verify": "npm test && npm run lint && npm run build && npm run typecheck"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

@@ -32,9 +32,18 @@ npm install
 npm run dev      # http://localhost:3000
 npm run build
 npm run start
-npm test         # TaskEngine unit tests (node:test + tsx)
+npm test         # unit + demo integration tests (node:test + tsx)
 npm run typecheck
 npm run lint
+npm run verify   # test + lint + build + typecheck (release gate)
 ```
+
+## Release verification (联调 / 回归 / 上线验收)
+
+Run before tagging or deploying:
+
+1. `npm install`
+2. `npm run verify` — runs tests, lint, production build (refreshes `.next/types`), then `tsc` (standalone typecheck can fail if `.next/types` is stale from an old route tree; `verify` order avoids that)
+3. Smoke: `npm run start` and open `/`, `/stats`, `/share`, and `/share/demo` in a browser (complete tasks on `/` per on-page hints; on `/share/demo` confirm the shared snapshot renders; confirm no console errors)
 
 If you use a root-level **`app/`** directory, Next.js picks it over **`src/app/`**. Keep routes in one place (here: **`src/app/`** only).
